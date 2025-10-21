@@ -1,0 +1,269 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background: black;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  text-align: center;
+}
+
+.bdy-img{
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  position: relative;
+  top: 20%;
+}
+
+.bdy-img .img img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+
+
+/* Stars Background */
+.stars, .twinkling {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  display: block;
+}
+
+.stars {
+  background: url("https://www.script-tutorials.com/demos/360/images/stars.png") repeat;
+  animation: moveStars 200s linear infinite;
+}
+
+.twinkling {
+  background: url("https://www.script-tutorials.com/demos/360/images/twinkling.png") repeat;
+  animation: moveTwinkling 200s linear infinite;
+}
+
+/* Center Content */
+.center-content {
+  position: relative;
+  top: 40%;
+  transform: translateY(-40%);
+  padding: 0 10px;
+}
+
+.center-content .title {
+  margin: 20px;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background: #ff4081;
+  color: white;
+  transition: 0.3s;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+button:hover {
+  background: #f50057;
+}
+
+/* Surprise Section */
+#surprise {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hidden {
+  display: none;
+}
+
+.surprise-text {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  animation: fadeIn 3s ease-in-out infinite alternate;
+}
+
+.gift-box {
+  font-size: 4rem;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+}
+
+/* Animations */
+@keyframes moveStars {
+  from {background-position: 0 0;}
+  to {background-position: -10000px 5000px;}
+}
+
+@keyframes moveTwinkling {
+  from {background-position: 0 0;}
+  to {background-position: 10000px -5000px;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-15px); }
+}
+
+/* Cake Styles */
+.cake-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.cake-img {
+  width: 200px;
+  cursor: pointer;
+  animation: floatCake 3s ease-in-out infinite;
+}
+
+.cake-text {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  animation: fadeIn 2s ease-in-out infinite alternate;
+}
+
+/* Floating cake animation */
+@keyframes floatCake {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Confetti Styles */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background-color: #ff4081;
+  top: -10px;
+  animation: confettiFall 4s linear forwards;
+  z-index: 9999;
+  border-radius: 50%;
+}
+
+@keyframes confettiFall {
+  to {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* 🌸 Custom Alert Modal */
+.custom-alert {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.custom-alert-content {
+  background-color: #111;
+  padding: 30px 40px;
+  border-radius: 15px;
+  text-align: center;
+  border: 2px solid #ff4081;
+  color: #fff;
+  max-width: 400px;
+  width: 90%;
+  animation: fadeIn 0.5s ease-in-out;
+  box-shadow: 0 0 15px rgba(255, 64, 129, 0.6);
+}
+
+.custom-alert-content p {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+#customAlertBtn {
+  padding: 10px 25px;
+  font-size: 1rem;
+  background-color: #ff4081;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#customAlertBtn:hover {
+  background-color: #f50057;
+}
+
+.hidden {
+  display: none;
+}
+
+/* 🎯 Responsive Design */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .surprise-text {
+    font-size: 1.5rem;
+  }
+
+  .cake-img {
+    width: 150px;
+  }
+
+  .custom-alert-content {
+    max-width: 320px;
+    padding: 20px;
+  }
+
+  #customAlertBtn {
+    font-size: 0.9rem;
+    padding: 8px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.6rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 10px 18px;
+  }
+
+  .cake-img {
+    width: 120px;
+  }
+
+  .custom-alert-content p {
+    font-size: 1rem;
+  }
+
+  #customAlertBtn {
+    width: 100%;
+    padding: 10px 0;
+  }
+}

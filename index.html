@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday My Love</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Full-screen responsive background video */
+    #myVideo {
+      position: fixed;
+      /* Keeps video in the background */
+      top: 50%;
+      left: 50%;
+      width: 100vw;
+      /* Full viewport width */
+      height: 100vh;
+      /* Full viewport height */
+      object-fit: cover;
+      /* Cover entire screen while keeping aspect ratio */
+      transform: translate(-50%, -50%);
+      /* Center the video */
+      z-index: -1;
+      /* Behind content */
+      opacity: 0.5;
+      /* Adjust transparency as needed */
+    }
+  </style>
+</head>
+
+<body>
+
+  <video autoplay muted loop id="myVideo">
+    <source src="background.mp4" type="video/mp4">
+  </video>
+
+  <!-- Starry Background -->
+  <div class="stars">
+    <!-- Floating Messages -->
+    <div id="messages-container"></div>
+  </div>
+  <div class="twinkling"></div>
+
+
+
+  <!-- Main Birthday Message -->
+  <div class="center-content">
+    
+  <div class="bdy-img">
+        <div class="img">
+      <img src="bdy.jpg" alt="">
+    </div>
+  </div>
+  
+    <h1 class="title">Happy Birthday My Love 💖</h1>
+    <button id="startBtn">Click to Begin Your Surprise</button>
+  </div>
+
+
+  <!-- Hidden Surprise Section -->
+  <div id="surprise" class="hidden">
+    <h2 class="surprise-text">✨ You’re my shining star! ✨</h2>
+    <div class="gift-box">🎁</div>
+
+    <!-- Cake Section -->
+    <div class="cake-container hidden" id="cakeContainer">
+      <img src="https://png.pngtree.com/png-vector/20240531/ourmid/pngtree-love-cake-chocolate-png-image_12586381.png  "
+        alt="Cake" class="cake-img">
+      <p class="cake-text">🎉 Click on the cake to cut it! 🎉</p>
+    </div>
+  </div>
+
+
+
+
+
+
+  <audio id="bgMusic" src="Love music.mpeg"></audio>
+  <script>
+
+    // ==============================
+    // 💖 LOVE GAMES INJECTION (NO HTML/CSS CHANGES)
+    // ==============================
+
+    let gamesInjected = false;
+
+    // Wait until DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+      const startBtn = document.getElementById('startBtn');
+      if (!startBtn) return;
+
+      // When "Click to Begin Your Surprise" is clicked → show cake
+      startBtn.addEventListener('click', () => {
+        const surpriseSection = document.getElementById('surprise');
+        if (surpriseSection) {
+          surpriseSection.classList.remove('hidden');
+
+          // After a short delay (so cake is visible), add "Open Your Gift" button
+          setTimeout(() => {
+            if (!document.getElementById('openGiftBtn')) {
+              const cakeContainer = document.getElementById('cakeContainer');
+              if (cakeContainer) {
+                const openGiftBtn = document.createElement('button');
+                openGiftBtn.id = 'openGiftBtn';
+                openGiftBtn.textContent = 'Open Your Gift';
+                openGiftBtn.style.cssText = `
+              margin-top: 25px;
+              padding: 12px 25px;
+              border: none;
+              border-radius: 8px;
+              font-size: 1.2rem;
+              cursor: pointer;
+              background: #4CAF50;
+              color: white;
+              transition: 0.3s;
+            `;
+                openGiftBtn.onmouseover = () => openGiftBtn.style.background = '#388E3C';
+                openGiftBtn.onmouseout = () => openGiftBtn.style.background = '#4CAF50';
+
+                cakeContainer.parentNode.insertBefore(openGiftBtn, cakeContainer.nextSibling);
+
+                // Add click listener to open games
+                openGiftBtn.addEventListener('click', () => {
+                  if (!gamesInjected) {
+                    injectGamesSection();
+                    gamesInjected = true;
+                  }
+                });
+              }
+            }
+          }, 500);
+        }
+      });
+    });
+
+    function injectGamesSection() {
+      // Hide cake and gift button
+      const cakeContainer = document.getElementById('cakeContainer');
+      const openGiftBtn = document.getElementById('openGiftBtn');
+      if (cakeContainer) cakeContainer.classList.add('hidden');
+      if (openGiftBtn) openGiftBtn.style.display = 'none';
+
+      // Create games container — now perfectly centered
+      const gamesDiv = document.createElement('div');
+      gamesDiv.id = 'loveGamesSection';
+      gamesDiv.style.cssText = `
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    padding: 25px;
+    background: rgb(0, 0, 0);
+    border: 2px solid #ff4081;
+    border-radius: 20px;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 0 20px rgba(255, 64, 129, 0.5);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+  `;
+
+      gamesDiv.innerHTML = `
+    <!-- Love Compatibility -->
+        
+    <a id="backlink" class="back-btn" href="index.html" style="text-decoration: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(220, 7, 7);
+    padding: 5px 5px 0px;
+    transition: 0.4s; border-radius: 0 18.5px 0 0;"> <img src="cancel.svg" alt=""> </a>
+
+    <div style="margin-bottom: 30px;">
+      <h2 style="font-size: 1.8rem; margin-bottom: 15px; color: #ff4081;">💘 Love Compatibility</h2>
+      <input type="text" id="yourNameInput" placeholder="Boy Name" value=""
+        style="width: 80%; padding: 12px; font-size: 1rem; border: 2px solid #ff4081; border-radius: 10px; background: #111; color: white; margin-bottom: 12px; outline: none;">
+      <input type="text" id="partnerNameInput" placeholder="Girl Name" value=""
+        style="width: 80%; padding: 12px; font-size: 1rem; border: 2px solid #ff4081; border-radius: 10px; background: #111; color: white; margin-bottom: 15px; outline: none;">
+      <button id="calcCompatBtn" style="padding: 12px 25px; background: #ff4081; color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; transition: background 0.3s;">
+        Calculate Love %
+      </button>
+      <div id="compatResult" style="margin-top: 15px; font-size: 1.5rem; font-weight: bold; color: #ff4081;"></div>
+    </div>
+
+    <!-- Surprise Gift Locker -->
+    <div>
+      <h2 style="font-size: 1.8rem; margin-bottom: 15px; color: #ff4081;">🎁 Surprise Gift</h2>
+      <p style="margin-bottom: 10px; opacity: 0.9;">Unlock with a secret code!</p>
+      <input type="text" id="giftCodeInput" placeholder="Enter secret code..." 
+        style="width: 80%; padding: 12px; font-size: 1rem; border: 2px solid #ff4081; border-radius: 10px; background: #111; color: white; margin-bottom: 12px; outline: none;">
+      <button id="unlockGiftBtn" style="padding: 12px 25px; background: #4CAF50; color: white; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; transition: background 0.3s;">
+        UNLOCK
+      </button>
+      <div id="giftMessage" style="display: none; margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.1); border-radius: 10px; color: #fff; font-weight: bold; line-height: 1.4;">
+        🎉 Happy Birthday, Priyanshi! You are the most special person to me ❤️
+      </div>
+    </div>
+  `;
+
+      // Add to body (so it's centered over everything)
+      document.body.appendChild(gamesDiv);
+
+      // ===== Add functionality =====
+      document.getElementById('calcCompatBtn').addEventListener('click', () => {
+        const name1 = document.getElementById('yourNameInput').value.trim().toLowerCase();
+        const name2 = document.getElementById('partnerNameInput').value.trim().toLowerCase();
+        if (!name1 || !name2) {
+          alert("Please enter both names!");
+          return;
+        }
+        const combined = (name1 + name2).replace(/[^a-z]/g, '');
+        const unique = new Set(combined).size;
+        const total = combined.length;
+        let score = Math.min(100, Math.floor((unique / total) * 100 + 30));
+        score = Math.max(60, score);
+        document.getElementById('compatResult').innerText = `${score}% 💖`;
+      });
+
+      document.getElementById('unlockGiftBtn').addEventListener('click', () => {
+        const code = document.getElementById('giftCodeInput').value.trim().toLowerCase();
+        const msg = document.getElementById('giftMessage');
+        if (code === "love you") {
+          msg.style.display = "block";
+          msg.innerHTML = "🎉 <b>Happy Birthday, Priyanshi!</b><br>My life feels incomplete without you. I love you more with every passing moment. ❤️<br><br>— Rishabh";
+        } else {
+          alert("❌ Incorrect code! Hint: What do you often say to me?");
+          msg.style.display = "none";
+          document.getElementById('giftCodeInput').value="";
+        }
+      });
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+
+</html>

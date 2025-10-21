@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antique-Modern Loader</title>
+<style>
+  /* Full-page loader background */
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Georgia', serif; /* Antique font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+  /* Loader container */
+  #loader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* Antique-modern spinner */
+  .spinner {
+    width: 80px;
+    height: 80px;
+    border: 8px solid #533756; /* Antique gold */
+    border-top: 8px solid #4570dbfd; /* Darker antique */
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite;
+    box-shadow: 0 0 20px rgba(139,94,60,0.5);
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Text under spinner */
+  #loader-text {
+    font-size: 1.5rem;
+    color: #e1dcd7;
+    text-shadow: 1px 1px 2px #c0a878;
+  }
+
+  /* Offline message */
+  #offline {
+    display: none;
+    font-size: 1.8rem;
+    color: #b22222;
+    text-align: center;
+    padding: 20px;
+    border: 2px solid #b22222;
+    border-radius: 10px;
+    background-color: #f8d7da;
+    box-shadow: 0 0 15px rgba(178,34,34,0.3);
+  }
+</style>
+</head>
+<body>
+
+<div id="loader">
+  <div class="spinner"></div>
+  <div id="loader-text">Loading, please wait...</div>
+</div>
+
+<div id="offline">⚠️ You are offline! Please check your connection.</div>
+
+<script>
+  // Function to toggle online/offline
+  function updateOnlineStatus() {
+    const loader = document.getElementById('loader');
+    const offline = document.getElementById('offline');
+    
+    if (navigator.onLine) {
+      loader.style.display = 'flex';
+      offline.style.display = 'none';
+  
+      // After 3 seconds, hide loader and redirect
+      setTimeout(() => {
+        loader.style.display = 'none';
+        // Redirect to another page
+        window.location.href = "index.html"; // <-- replace with your HTML page
+      }, 3000); // 3000ms = 3 seconds
+
+    } else {
+      loader.style.display = 'none';
+      offline.style.display = 'block';
+    }
+  }
+
+  // Initial check
+  updateOnlineStatus();
+
+  // Listen for online/offline events
+  window.addEventListener('online', updateOnlineStatus);
+  window.addEventListener('offline', updateOnlineStatus);
+</script>
+
+
+
+</body>
+</html>
